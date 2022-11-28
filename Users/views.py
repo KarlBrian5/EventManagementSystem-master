@@ -180,7 +180,9 @@ def create_guests_list(request):
             new_form3 = form3.save(commit=False)
             new_form3.created_by = request.user
             new_form3.save()
+            phone_number = '+254796839406'
             messages.success(request, f'Guest added succesfully')
+            sms.send('A new guest has been created successfully', [f'{phone_number}'],callback=create_guests_list)
             return redirect('view_guests_list')
     else:
         form3 = InvitedGuestsForm()
