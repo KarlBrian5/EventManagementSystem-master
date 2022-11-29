@@ -343,7 +343,7 @@ def guest_registration(request,id):
             phone_number = form4.cleaned_data.get('phonenumber')
             recipient = [email]
             subject = f'Registration for the {viewevent.eventname} event'
-            content = f'Dear {name},\n\nYou have succesfully enrolled for the {viewevent.eventname} event that is to be held on {viewevent.date} in {viewevent.venue}.\n\nDescription: {viewevent.description}.\n\nFor more enquiries, email us at ezenfinancialsevents@gmail.com\n\nSee you there.'
+            content = f'Dear {name},\n\nYou have succesfully enrolled for the {viewevent.eventname} event that is to be held on {viewevent.date} in {viewevent.venue}.\n\nDescription: {viewevent.description}.\n\nFor more enquiries, email us at moeliving93@gmail.com\n\nSee you there.'
             send_mail(subject, content, settings.EMAIL_HOST_USER,recipient, fail_silently=False)
             messages.success(request,'Success, you will receive a confirmation email')
             sms.send(f'Dear {name},You have succesfully enrolled for the {viewevent.eventname} event that is to be held on {viewevent.date} in {viewevent.venue}. Check your mail for more details',[f'{phone_number}'], callback = guest_registration)
