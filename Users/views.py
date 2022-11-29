@@ -15,7 +15,7 @@ from django.views.decorators.csrf import csrf_exempt #for the ussd function
 import africastalking
 from .filters import *
 from django.core.paginator import Paginator
-
+import ssl
 import io
 import reportlab
 from reportlab.pdfgen import canvas
@@ -161,8 +161,8 @@ def sendmail(request,id):
     msg['To']= recipients
     msg.set_content(f'Hello {InvitedGuests.guestname},\n\n\nI would like to invite you to {viewevent.eventname}.\n\nIt will be held in {viewevent.venue} on {viewevent.date}.\n\nDescription: {viewevent.description}.\n\nKindly confirm your attendance. \n\n\nThank you.')
     
-    server = smtplib.SMTP_SSL('smtp.gmail.com', 465)
-    server.login('moeliving96@gmail.com','vbuymvxdoulbrpfw')
+    server = smtplib.SMTP_SSL('smtp.gmail.com', 587)
+    server.login('moeliving93@gmail.com','vbuymvxdoulbrpfw')
     server.send_message(msg)
     server.quit()
     messages.success(request, f'Invites Succesfully sent')
